@@ -22,11 +22,32 @@ public class Lambda {
 
         process(r1);
         process(r2);
-        process(() -> System.out.println("Hello world 3"));
+        process((Runnable) () -> System.out.println("Hello world 3"));
+
+        // 다음 코드의 문제 해결
+        // Object o = () -> {System.out.println("Tricky example"); };
+        Runnable r = () -> System.out.println("Tricky example");
+
+        // 캐스트로 대상 형식 명시
+        process((Action) () ->{});
+
+        // 람다 캡처링: 자유 변수(외부에서 정의된 변수) 활용 - final 변수
+        // 원래 변수에 접근을 허용하는 것이 아니라 자유 지역 변수의 복사본 사용
+        int portNumber = 1339;
+        Runnable rr = () -> System.out.println(portNumber);
+        // portNumber = 191; -> error 발생
     }
 
     public static void process(Runnable r) {
         r.run();
     }
 
+    public static void process(Action action) {
+        action.act();
+    }
+
+    @FunctionalInterface
+    interface Action {
+        void act();
+    }
 }

@@ -6,8 +6,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import java.util.function.Predicate;
 
+import static modern.apple.ListUtil.filter;
 import static modern.ch2.FilteringApples.Color.*;
 
 public class FilteringApples {
@@ -108,17 +108,6 @@ public class FilteringApples {
             String output = formatter.accept(apple);
             System.out.println(output);
         }
-    }
-
-    public static <T> List<T> filter(List<T> list, Predicate<T> p) {
-        List<T> result = new ArrayList<>();
-        for (T e : list) {
-            if(p.test(e)) {
-                result.add(e);
-            }
-        }
-
-        return result;
     }
 
     public enum Color {
