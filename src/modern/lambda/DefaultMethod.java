@@ -2,19 +2,17 @@ package modern.lambda;
 
 import modern.apple.Apple;
 
-import java.util.List;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static java.util.Comparator.comparing;
 import static modern.apple.Color.RED;
+import static modern.apple.Data.inventory;
 import static modern.ch2.FilteringApples.Color.GREEN;
 
 public class DefaultMethod {
 
     public static void main(String[] args) {
-        List<Apple> inventory = Apple.createInventory();
-
         // Comparator
         // 역정렬
         inventory.sort(comparing(Apple::getWeight).reversed());

@@ -8,6 +8,7 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 import static modern.apple.Color.*;
+import static modern.apple.Data.inventory;
 import static modern.apple.ListUtil.filter;
 import static modern.apple.ListUtil.map;
 
@@ -20,12 +21,6 @@ public class FilteringApples {
     }
 
     public static void main(String[] args) {
-        List<Apple> inventory = new ArrayList<>(List.of(
-                new Apple(80, GREEN),
-                new Apple(155, RED),
-                new Apple(124, BLUE)
-        ));
-
         // 메서드 참조 - 가독성 향상, (::) 구분자 사용
         inventory.sort(Comparator.comparing(Apple::getWeight));
 
