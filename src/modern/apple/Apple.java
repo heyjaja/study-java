@@ -1,5 +1,10 @@
 package modern.apple;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import static modern.apple.Color.*;
+
 public class Apple implements Fruit {
 
     private int weight;
@@ -16,6 +21,14 @@ public class Apple implements Fruit {
 
     public Apple(Integer weight) {
         this.weight = weight;
+    }
+
+    public static List<Apple> createInventory() {
+        return new ArrayList<>(List.of(
+                new Apple(80, GREEN),
+                new Apple(155, RED),
+                new Apple(124, BLUE)
+        ));
     }
 
     public int getWeight() {
